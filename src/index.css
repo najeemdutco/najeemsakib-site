@@ -1,0 +1,59 @@
+@import "tailwindcss";
+
+@theme {
+  --color-navy: #1A2D4D;
+  --color-navy-soft: #111F38;
+  --color-gold: #FFB81C;
+  --color-gold-dark: #E6A500;
+  --color-gold-wash: #FFF8E8;
+  --color-ink: #666666;
+  --color-ink-light: #999999;
+  --color-panel: #F5F5F5;
+  --color-hairline: #E8EEF5;
+  --color-fieldline: #D0D8E8;
+
+  --font-display: 'Space Grotesk', sans-serif;
+  --font-sans: 'IBM Plex Sans', sans-serif;
+  --font-mono: 'IBM Plex Mono', monospace;
+}
+
+@layer base {
+  body {
+    margin: 0;
+    background: #fff;
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: var(--color-navy); }
+}
+
+@keyframes ns-pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(255, 184, 28, .5); }
+  50% { box-shadow: 0 0 0 10px rgba(255, 184, 28, 0); }
+}
+@keyframes ns-pulse-lg {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(255, 184, 28, .5); }
+  50% { box-shadow: 0 0 0 12px rgba(255, 184, 28, 0); }
+}
+@keyframes ns-dash { to { stroke-dashoffset: -48; } }
+@keyframes ns-spin { from { transform: rotate(0); } to { transform: rotate(360deg); } }
+@keyframes ns-blink { 0%, 100% { opacity: 1; } 50% { opacity: .25; } }
+@keyframes ns-bob { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(6px); } }
+
+.animate-ns-pulse { animation: ns-pulse 3s ease-in-out infinite; }
+.animate-ns-pulse-lg { animation: ns-pulse-lg 3s ease-in-out infinite; }
+.animate-ns-dash { animation: ns-dash 1.8s linear infinite; }
+.animate-ns-spin-slow { animation: ns-spin 14s linear infinite; }
+.animate-ns-spin-slower { animation: ns-spin 30s linear infinite; }
+.animate-ns-blink { animation: ns-blink 2s ease-in-out infinite; }
+.animate-ns-bob { animation: ns-bob 2.2s ease-in-out infinite; }
+
+.dot-grid-light {
+  background-image: radial-gradient(rgba(184, 197, 217, .5) 1.3px, transparent 1.3px);
+  background-size: 22px 22px;
+}
+.dot-grid-dark {
+  background-image: radial-gradient(rgba(184, 197, 217, .14) 1.2px, transparent 1.2px);
+  background-size: 22px 22px;
+}
