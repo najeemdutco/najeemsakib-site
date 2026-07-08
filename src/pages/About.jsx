@@ -77,7 +77,7 @@ export default function About() {
             <span className="text-sm text-ink-light">
               Full story?{' '}
               <a href={BOOK_A_DEMO_URL} target="_blank" rel="noopener noreferrer" className="font-semibold text-navy">
-                Invite me for a coffee ☕
+                Lets grab a Coffee ☕
               </a>
             </span>
           </div>

@@ -20,12 +20,12 @@ function DockIcon({ to, label, path, onClick }) {
       end={to === '/'}
       onClick={onClick}
       className={({ isActive }) =>
-        `grid h-11 w-11 place-items-center rounded-full transition-all duration-200 ease-[cubic-bezier(.34,1.56,.64,1)] hover:-translate-y-1.5 hover:scale-[1.16] hover:bg-gold hover:text-navy ${
+        `grid h-9 w-9 place-items-center rounded-full transition-all duration-200 ease-[cubic-bezier(.34,1.56,.64,1)] hover:-translate-y-1.5 hover:scale-[1.16] hover:bg-gold hover:text-navy md:h-11 md:w-11 ${
           isActive ? 'bg-gold text-navy' : 'bg-white/6 text-[#8FA3C4]'
         }`
       }
     >
-      <svg viewBox="0 0 24 24" className="h-[19px] w-[19px] fill-none stroke-current stroke-[1.9]" strokeLinecap="round" strokeLinejoin="round">
+      <svg viewBox="0 0 24 24" className="h-[17px] w-[17px] fill-none stroke-current stroke-[1.9] md:h-[19px] md:w-[19px]" strokeLinecap="round" strokeLinejoin="round">
         <path d={path} />
       </svg>
     </NavLink>
@@ -37,17 +37,18 @@ export default function Nav() {
 
   return (
     <div className="sticky top-0 z-50 flex justify-center px-0 pb-2.5 pt-3.5 [&_*]:pointer-events-auto pointer-events-none">
+      {/* Brand — full name on desktop, NS monogram only on mobile */}
       <NavLink
         to="/"
         onClick={playBlip}
-        className="absolute left-[26px] top-1/2 flex -translate-y-1/2 items-center gap-2.5 rounded-xl border border-white/10 bg-navy-soft py-2 pl-2 pr-4.5 text-decoration-none shadow-[0_12px_32px_rgba(17,31,56,.3)] hover:text-white"
+        className="absolute left-3 top-1/2 flex -translate-y-1/2 items-center gap-2.5 rounded-xl border border-white/10 bg-navy-soft p-2 text-decoration-none shadow-[0_12px_32px_rgba(17,31,56,.3)] hover:text-white md:left-[26px] md:pr-4.5"
       >
         <span className="grid h-8 w-8 shrink-0 place-items-center rounded-lg bg-gold font-display text-[13px] font-bold text-navy">NS</span>
-        <span className="whitespace-nowrap font-display text-[15px] font-bold text-white">Najeem Sakib</span>
+        <span className="hidden whitespace-nowrap font-display text-[15px] font-bold text-white md:inline">Najeem Sakib</span>
       </NavLink>
 
       <div className="flex items-center gap-3">
-        <div className="flex items-center gap-1.5 rounded-full border border-white/10 bg-navy-soft px-3 py-2 shadow-[0_12px_32px_rgba(17,31,56,.35)]">
+        <div className="flex items-center gap-1 rounded-full border border-white/10 bg-navy-soft px-2 py-1.5 shadow-[0_12px_32px_rgba(17,31,56,.35)] md:gap-1.5 md:px-3 md:py-2">
           {PAGES.map((p) => (
             <DockIcon key={p.to} {...p} onClick={playBlip} />
           ))}
@@ -58,14 +59,19 @@ export default function Nav() {
         </div>
       </div>
 
+      {/* CTA — text pill on desktop, circular calendar button on mobile */}
       <a
         href={BOOK_A_DEMO_URL}
         target="_blank"
         rel="noopener noreferrer"
         onClick={playBlip}
-        className="absolute right-[26px] top-1/2 -translate-y-1/2 whitespace-nowrap rounded-full bg-gold px-5.5 py-3.5 font-display text-sm font-bold text-navy no-underline shadow-[0_12px_32px_rgba(255,184,28,.3)] transition-all duration-200 ease-[cubic-bezier(.34,1.56,.64,1)] hover:-translate-y-1/2 hover:scale-105 hover:bg-gold-dark"
+        title="Book a Demo"
+        className="absolute right-3 top-1/2 grid h-12 w-12 -translate-y-1/2 place-items-center rounded-full bg-gold font-display text-sm font-bold text-navy no-underline shadow-[0_12px_32px_rgba(255,184,28,.3)] transition-all duration-200 ease-[cubic-bezier(.34,1.56,.64,1)] hover:-translate-y-1/2 hover:scale-105 hover:bg-gold-dark md:right-[26px] md:h-auto md:w-auto md:px-5.5 md:py-3.5"
       >
-        Book a Demo →
+        <svg viewBox="0 0 24 24" className="h-5 w-5 fill-none stroke-navy stroke-[1.9] md:hidden" strokeLinecap="round" strokeLinejoin="round">
+          <path d="M4 6 H20 V20 H4 Z M4 10 H20 M8 3 V7 M16 3 V7 M8 14 H10 M14 14 H16 M8 17 H10" />
+        </svg>
+        <span className="hidden whitespace-nowrap md:inline">Book a Demo →</span>
       </a>
     </div>
   )
